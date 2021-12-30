@@ -1,7 +1,7 @@
 import './App.css';
 import Slack from "./container/slack"
 import Appenpraises from "./container/appenpraises"
-import { BrowserRouter, Route ,Switch ,Link} from 'react-router-dom';
+import { BrowserRouter, Route ,Switch ,Link,NavLink} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Button, notification } from 'antd';
 import 'antd/dist/antd.css';
@@ -29,13 +29,13 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-      <Link to='/'>
+      <NavLink to='/' exact  activeClassName="link-active">
           <span>Home</span>
-      </Link>
+      </NavLink>
       {" "}
-      <Link to='/appenpraise'>
+      <NavLink to='/appenpraise' exact  activeClassName="link-active">
           <span>Appenpraises</span>
-      </Link>
+      </NavLink>
       <Switch>
           <Route path='/' exact  render={(props) => {
                 return <Slack {...props} login={login} name={name}/>

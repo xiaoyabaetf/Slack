@@ -47,15 +47,15 @@ io.on('connection', function(socket){ // socket相关监听都要放在这个回
                 let messagesList=JSON.parse(data);//全部消息
                 let lastNews=messagesList[messagesList.length-1]
                 let idList=[]
-                //console.info(lastNews)
+                console.info(lastNews)
                 for(let i=0;i<NameList.length;i++){
                   if(Object.keys(lastNews).length){
-                    if(lastNews.value.indexOf(NameList[i].name)>-1){//消息里包含指定的名字
+                    if(lastNews.value.indexOf("@"+NameList[i].name)>-1){//消息里包含指定的名字
                       idList.push(NameList[i].id)
                     }
                   }
                 }
-               // console.info(idList);
+                console.info(idList);
                 for(let j=0;j<idList.length;j++){
                   io.to(`${idList[j]}`).emit('someBodyCallYou', '有人评价了你去看看吧');
                 }

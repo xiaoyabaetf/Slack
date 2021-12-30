@@ -58,12 +58,21 @@ function Slack(props) {///appenpraise @John did something great! Congratulations
                             $("#text").scrollTop($("#text").scrollTop()+32);
                             keyup.current.focus();
                         }
+                        let now = new Date();
+                        let year = now.getFullYear(); //得到年份
+                        let month = now.getMonth();//得到月份
+                        let date = now.getDate();//得到日期
+                        let day = now.getDay();//得到周几
+                        let hour = now.getHours();//得到小时
+                        let minu = now.getMinutes();//得到分钟
+                        let sec = now.getSeconds();//得到秒
+                        let end=` from ${props.name} ${year}-${month}-${date} ${hour}:${minu}:${sec}`
                         if(flagOne){
-                            sendPraises({value:tempvalue.slice(tempvalue.indexOf("@"))}).then(res=>{
+                            sendPraises({value:tempvalue.slice(tempvalue.indexOf("@"))+ end}).then(res=>{
                                 handle()
                             })
                         }else{
-                            sendPraises({value:tempvalue.slice("/appenpraise ".length)}).then(res=>{
+                            sendPraises({value:tempvalue.slice("/appenpraise ".length) + end }).then(res=>{
                                 handle()
                             })
                         }

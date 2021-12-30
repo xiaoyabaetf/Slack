@@ -21,27 +21,29 @@ function Appenpraises() {
     },[])
     return (
         <div className="Appenpraises">
-            <ul>
-                {
-                   list.length && list.map(i=>{
-                        return (
-                            <li>
-                                {/@\w+\s(.+)/g.test(i.value)? <Avatar
-                                        src={
-                                            <Image
-                                            src="https://joeschmoe.io/api/v1/random"
-                                            style={{
-                                                width: 32,
-                                            }}
-                                            />
-                                        }
-                                        />:""}
-                                {i.value}
-                            </li>
-                        )
-                    })
-                }
-            </ul>
+            {
+                list.length ? <ul>
+                    {
+                     list.map(i=>{
+                            return (
+                                <li>
+                                    {/@\w+\s(.+)/g.test(i.value)? <Avatar
+                                            src={
+                                                <Image
+                                                src="https://joeschmoe.io/api/v1/random"
+                                                style={{
+                                                    width: 32,
+                                                }}
+                                                />
+                                            }
+                                            />:""}
+                                    {i.value}
+                                </li>
+                            )
+                        })
+                    }
+                </ul>:""
+            }
         </div>
     )
 }

@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+	background-color:#396DA5 !important;
+	margin:0px;
+	padding:0px;
+	color:#fff;
+	font:"微软雅黑";
+	font-size:14px;
+}
+
+.link-active{
+  color:#fff !important
+}

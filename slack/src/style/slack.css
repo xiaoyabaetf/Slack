@@ -1,11 +1,5 @@
 @charset "utf-8";
-body {
-	background-color:#396DA5 !important;
-	margin:0px;
-	padding:0px;
-	color:#fff;
-	font:"微软雅黑";
-	font-size:14px;}
+
 	
 .window {
 	border:6px #ccc outset;
@@ -15,13 +9,20 @@ body {
 	position:absolute;
 	top:40px;
 	left:68px;
-    overflow:hidden
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    margin-top: -221px;
+    margin-left: -340px;
 }
 	
 	.title {
 		background-color:#08246B;
-		padding:2px;}
-	
+		padding:2px;
+	}
+	.title> span{
+		color:#fff
+	}
 	#text {
 		background-color:#000;
 		border-top:#ccc outset 2px;
