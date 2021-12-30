@@ -1,7 +1,6 @@
 import "../style/slack.css";
-import {useEffect, useRef,useState} from "react";
-import { Avatar, Image } from 'antd';
-
+import React, { useState, useEffect , useRef} from 'react';
+import { List, Avatar} from 'antd';
 function Appenpraises() {
     const [list,setList]=useState([])
     useEffect(()=>{
@@ -19,32 +18,23 @@ function Appenpraises() {
             });
         }
     },[])
+    const random=()=>{
+        return <Avatar src="https://joeschmoe.io/api/v1/random" />
+    }
     return (
-        <div className="Appenpraises">
-            {
-                list.length ? <ul>
-                    {
-                     list.map(i=>{
-                            return (
-                                <li>
-                                    {/@\w+\s(.+)/g.test(i.value)? <Avatar
-                                            src={
-                                                <Image
-                                                src="https://joeschmoe.io/api/v1/random"
-                                                style={{
-                                                    width: 32,
-                                                }}
-                                                />
-                                            }
-                                            />:""}
-                                    {i.value}
-                                </li>
-                            )
-                        })
-                    }
-                </ul>:""
-            }
-        </div>
+        <List
+            itemLayout="horizontal"
+            dataSource={list}
+            renderItem={(item,index) => (
+            <List.Item>
+                <List.Item.Meta
+                avatar={/@\w+\s(.+)/g.test(item.value) ? random() :<div style={{width:"32px",height:"32px",borderRadius:"50%",background:"#e3e3e3",textAlign:"center",lineHeight:"32px"}}>ALL</div>}
+                title={<a href="https://ant.design">第 {index+1} 条消息</a>}
+                description={item.value}
+                />
+            </List.Item>
+            )}
+        />
     )
 }
 
